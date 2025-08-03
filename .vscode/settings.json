@@ -5,6 +5,9 @@
         "format": "cpp",
         "list": "cpp",
         "vector": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "xhash": "cpp",
+        "utility": "cpp",
+        "ostream": "cpp"
     }
 }
