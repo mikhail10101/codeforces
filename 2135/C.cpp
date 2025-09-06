@@ -20,7 +20,7 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
-
+    
 }
 
 bool multiple = true;

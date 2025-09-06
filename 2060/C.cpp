@@ -20,7 +20,32 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
+    int n, k; cin >> n >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
 
+    sort(a.begin(), a.end());
+
+    int left = 0;
+    int right = n - 1;
+
+    int res = 0;
+    while (left < right) {
+        int total = a[left] + a[right];
+        if (total < k) {
+            left++;
+        } else if (total > k) {
+            right--;
+        } else {
+            res++;
+            left++;
+            right--;
+        }
+    }
+
+    cout << res;
 }
 
 bool multiple = true;

@@ -20,7 +20,22 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
+    int a, b, d, e; cin >> a >> b >> d >> e;
+    vector<int> cs;
+    cs.push_back(a + b);
+    cs.push_back(e - d);
+    cs.push_back(d - b);
 
+    int res = 1;
+    for (int c: cs) {
+        int cnt = 0;
+        if (a + b == c) cnt++;
+        if (b + c == d) cnt++;
+        if (c + d == e) cnt++;
+        res = max(res, cnt);
+    }
+
+    cout << res;
 }
 
 bool multiple = true;
