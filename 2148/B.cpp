@@ -1,6 +1,4 @@
 #include <iostream>
-#include <string>
-#include <sstream>
 #include <vector>
 #include <numeric>
 #include <algorithm>
@@ -22,7 +20,19 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
+    long long n, m, x, y; cin >> n >> m >> x >> y;
+    vector<long long> a(n), b(m);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    for (int i = 0; i < m; i++) {
+        cin >> b[i];
+    }
 
+    int p1 = (upper_bound(a.begin(), a.end(), x) - a.begin());
+    int p2 = (upper_bound(b.begin(), b.end(), y) - b.begin()); 
+
+    cout << p1 + p2;
 }
 
 bool multiple = true;

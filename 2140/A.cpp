@@ -22,7 +22,17 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
-
+    int n; cin >> n;
+    string s; cin >> s;
+    int zeroes = 0;
+    for (char c: s) {
+        zeroes += c == '0' ? 1 : 0;
+    }
+    int res = 0;
+    for (int i = 0; i < zeroes; i++) {
+        res += s[i] - '0';
+    }
+    cout << res;
 }
 
 bool multiple = true;

@@ -22,7 +22,24 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
+    /*
+    Bob has x
+    Find a y such that the combined digits of x and y
+    are divisible by x + y
 
+    x#y = x(10^z) + y = (x + y) * k and y has z digits
+    Find k?
+
+    x#y = x(10^z) + y = x(10^z - 1) + x + y
+    So x(10^z - 1) has to be divisible by (x + y)
+    If y = 2x,
+    x(10^z - 1) has to be divisble by 3x
+    The second factor will always be of the form 99....9, and will always
+    be divisible by 3
+
+    */
+    long long x; cin >> x;
+    cout << 2*x;
 }
 
 bool multiple = true;

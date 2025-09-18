@@ -1,6 +1,4 @@
 #include <iostream>
-#include <string>
-#include <sstream>
 #include <vector>
 #include <numeric>
 #include <algorithm>
@@ -22,7 +20,12 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
-
+    int x, n; cin >> x >> n;
+    if (n % 2 == 0) {
+        cout << 0;
+    } else {
+        cout << x;
+    }
 }
 
 bool multiple = true;
