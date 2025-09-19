@@ -22,7 +22,23 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
+    int n; cin >> n;
+    string s; cin >> s;
+    int left = 1;
+    int right = n;
 
+    vector<int> res;
+    for (int i = n-2; i >= 0; i--) {
+        if (s[i] == '<')
+            res.push_back(left++);
+        else
+            res.push_back(right--);
+    }
+    res.push_back(left);
+
+    reverse(res.begin(), res.end());
+
+    printVec(res);
 }
 
 bool multiple = true;

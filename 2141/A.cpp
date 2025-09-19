@@ -22,14 +22,29 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
 
+    vector<int> res;
+    int mini = INF;
+    for (int i = 0; i < n; i++) {
+        if (a[i] < mini) {
+            mini = a[i];
+        } else {
+            res.push_back(i + 1);
+        }
+    }
+
+    cout << res.size() << endl;
+    printVec(res);
 }
 
 bool multiple = true;
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
     int t = 1;
     if (multiple) cin >> t;
     while (t--) {

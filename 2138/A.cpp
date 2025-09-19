@@ -22,14 +22,28 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
+    long long k, x; cin >> k >> x;
+    long long a = x; k++;
 
+    vector<int> res;
+    while (a != 1ll << (k - 1)) {
+        if (a < 1ll << (k - 1)) {
+            a *= 2;
+            res.push_back(1);
+        } else {
+            a -= ((1ll << k) - a);
+            res.push_back(2);
+        }
+    }
+
+    reverse(res.begin(), res.end());
+    cout << res.size() << endl;
+    printVec(res);
 }
 
 bool multiple = true;
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
     int t = 1;
     if (multiple) cin >> t;
     while (t--) {
