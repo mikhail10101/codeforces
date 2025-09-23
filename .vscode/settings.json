@@ -16,6 +16,7 @@
         "ranges": "cpp",
         "span": "cpp",
         "algorithm": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "xiosbase": "cpp"
     }
 }
