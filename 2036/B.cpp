@@ -7,9 +7,7 @@
 #include <queue>
 #include <deque>
 #include <cmath>
-#include <set>
 #include <unordered_set>
-#include <map>
 #include <unordered_map>
 
 using namespace std;
@@ -26,7 +24,15 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
-
+    int n, k; cin >> n >> k;
+    vector<int> bcost(k + 1);
+    for (int i = 0; i < k; i++) {
+        int brand; cin >> brand;
+        int cost; cin >> cost;
+        bcost[brand] += cost;
+    }
+    sort(bcost.begin(), bcost.end(), greater<int>());
+    cout << accumulate(bcost.begin(), bcost.begin() + min(n, k), 0);
 }
 
 bool multiple = true;
