@@ -26,7 +26,24 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i =0 ; i < n; i++) cin >> a[i];
 
+    int l = a[0];
+    int r = a[0];
+
+    for (int i =1 ; i < n; i++) {
+        if (a[i] == l - 1) {
+            l--;
+        } else if (a[i] == r + 1) {
+            r++;
+        } else {
+            cout << "NO"; return;
+        }
+    }
+
+    cout << "YES";
 }
 
 bool multiple = true;
