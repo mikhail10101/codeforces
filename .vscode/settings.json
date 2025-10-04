@@ -18,6 +18,8 @@
         "algorithm": "cpp",
         "unordered_map": "cpp",
         "xiosbase": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "unordered_set": "cpp",
+        "cstdlib": "cpp"
     }
 }
