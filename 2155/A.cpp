@@ -26,10 +26,27 @@ void printVec(vector<T> vec) {
 }
 
 void solve() {
-    int n, q; cin >> n >> q;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
-}
+    int n; cin >> n;
+
+    int winners = n;
+    int losers = 0;
+    int res = 0;
+
+    while (true) {
+        if (losers == 1 && winners == 1) {
+            cout << res + 1; return;
+        }
+
+        int winMatches = winners / 2;
+        winners -= winMatches;
+        res += winMatches;
+        losers += winMatches;
+
+        int loseMatches = losers / 2;
+        losers -= loseMatches;
+        res += loseMatches;
+    }
+}   
 
 bool multiple = true;
 
