@@ -37,10 +37,22 @@ int int_log(int n, int base) {
 }
 
 void solve() {
-
+    string s; cin >> s;
+    int res = 0;
+    int opens = 0;
+    for (char c: s) {
+        if (c == '(') opens++;
+        else {
+            if (opens > 0) {
+                res++;
+                opens--;
+            }
+        }
+    }
+    cout << res * 2;
 }
 
-bool multiple = true;
+bool multiple = false;
 
 int main() {
     ios::sync_with_stdio(false);

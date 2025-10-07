@@ -37,7 +37,7 @@ int int_log(int n, int base) {
 }
 
 void solve() {
-
+    
 }
 
 bool multiple = true;
