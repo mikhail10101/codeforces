@@ -43,7 +43,35 @@ int find_conseq(int n) {
 }
 
 void solve() {
+    int k, a, b, x, y; cin >> k >> a >> b >> x >> y;
+    /*
+    Steak 1 requires value above a and costs x
+    Steak 2 requires value above b and costs y
+    We should greedily choose the steak that costs less?
+    As soon as we can't choose it anymore, try the other steak
     
+    For ease, make a and x correspond to the cheaper steak
+    */
+    if (x > y) {
+        swap(x, y);
+        swap(a, b);
+    }
+    a--; b--;
+
+    int res = 0;
+    // Use steak 1 until temperature drops below a
+    int diff = max(0, k - a);
+    int s1 = diff / x;
+    if (diff > s1 * x) s1++;
+    res += s1;
+    k -= s1 * x;
+    // Use steak 2 until temperature drops below b
+    diff = max(0, k - b);
+    int s2 = diff / y;
+    if (diff > s2 * y) s2++;
+    res += s2;
+
+    cout << res;
 }
 
 bool multiple = true;
@@ -57,5 +85,4 @@ int main() {
         solve();
         cout << endl;
     }
-
 }

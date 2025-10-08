@@ -20,6 +20,7 @@
         "xiosbase": "cpp",
         "iosfwd": "cpp",
         "unordered_set": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "numeric": "cpp"
     }
 }

@@ -43,7 +43,12 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int w, h, a, b; cin >> w >> h >> a >> b;
+    int x1, y1, x2, y2; cin >> x1 >> y1 >> x2 >> y2;
+    int diffx = abs(x1 - x2);
+    int diffy = abs(y1 - y2);
+    if ((diffx % a == 0 && diffx != 0) || (diffy % b == 0 && diffy != 0)) cout << "YES";
+    else cout << "NO";
 }
 
 bool multiple = true;

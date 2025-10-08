@@ -16,7 +16,7 @@ using namespace std;
 
 using ll = long long;
 
-const ll INF = 1e17 + 11;
+const int INF = 1e9 + 11;
 
 template <typename T>
 void printVec(vector<T> vec) {
@@ -43,7 +43,16 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    // Cut the cell in half at each point in time until it reaches one
+    int a, b, n, m; cin >> n >> m >> a >> b; a--; b--;
+    int x, y;
+    x = min(a + 1, n - a);
+    y = min(b + 1, m - b);
+    int res = min(
+        (int)ceil(log2(x)) + (int)ceil(log2(m)),
+        (int)ceil(log2(n)) + (int)ceil(log2(y))
+    ) + 1;
+    cout << res;
 }
 
 bool multiple = true;
