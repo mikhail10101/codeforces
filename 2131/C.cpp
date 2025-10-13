@@ -59,7 +59,25 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n, k; cin >> n >> k;
+    unordered_map<int, int, custom_hash> s; unordered_map<int, int, custom_hash> t;
+    for (int i = 0, x; i < n; i++) {
+        cin >> x;
+        int index = min(x % k, k - x % k);
+        s[index]++;
+    }
+    for (int i = 0, x; i < n; i++) {
+        cin >> x;
+        int index = min(x % k, k - x % k);
+        t[index]++;
+    }
+    for (auto [k, v]: s) {
+        if (t.find(k) == t.end() || v != t[k]) {
+            cout << "NO";
+            return;
+        }
+    }
+    cout << "YES";
 }
 
 bool multiple = true;

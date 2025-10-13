@@ -59,7 +59,50 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i =0; i < n; i++) cin >> a[i];
+    sort(a.begin(), a.end());
+
+    vector<int> singles;
+    ll pairSum = 0;
+
+    int i = 0;
+    int pairsFound = 0;
+    while (i < n) {
+        if (i + 1 < n && a[i] == a[i+1]) {
+            pairSum += a[i] * 2;
+            pairsFound++;
+            i += 2;
+        } else {
+            singles.push_back(a[i]);
+            i++;
+        }
+    }
+
+    if (pairsFound == 0) {
+        cout << 0; return;
+    }
+
+    ll res = pairSum;
+    for (int edge: singles) {
+        if (edge < pairSum) {
+            res = max(res, pairSum + edge);
+        }
+    }
+
+    for (int i = 1; i < singles.size(); i++) {
+        int diff = singles[i] - singles[i - 1];
+        if (diff < pairSum) {
+            res = max(res, pairSum + singles[i] + singles[i - 1]);
+        }
+    }
+
+    if (pairsFound == 1 && res == pairSum) {
+        cout << 0; 
+    } else {
+        cout << res;
+    }
 }
 
 bool multiple = true;

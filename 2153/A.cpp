@@ -59,7 +59,16 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<bool> a(n + 1, false);
+    int res = 0;
+    for (int i = 0; i < n; i++) {
+        int x; cin >> x;
+        if (!a[x]) {
+            res++; a[x] = true;
+        }
+    }
+    cout << res;
 }
 
 bool multiple = true;

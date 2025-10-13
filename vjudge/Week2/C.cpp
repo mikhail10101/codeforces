@@ -59,7 +59,32 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    reverse(a.begin(), a.end());
+
+    // Min skip given the player that killed the monster at that point
+    // 0 is me, 1 is friend
+    vector<vector<int>> dp(2, vector<int>(n));
+    if (a[0]) dp[1][0] = 1;
+    if (a[1]) dp[1][1] = 1;
+    for (int i = 2; i < n; i++) {
+        dp[1][i] = min(
+            dp[0][i-1] + a[i],
+            dp[0][i-2] + a[i-1] + a[i]
+        );
+        dp[0][i] = min(
+            dp[1][i-1],
+            dp[1][i-2]
+        );
+    }
+
+    // cout << "DEBUG" << endl;
+    // printVec(dp[0]);
+    // printVec(dp[1]);
+
+    cout << dp[1][n-1];//min(dp[0][n-1], dp[1][n-1]);
 }
 
 bool multiple = true;

@@ -34,6 +34,7 @@ void solve() {
             cout.flush();
             fflush(stdout);
             int x; cin >> x;
+            if (x == 1) return;
         }
     }
 }

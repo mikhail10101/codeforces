@@ -21,6 +21,8 @@
         "iosfwd": "cpp",
         "unordered_set": "cpp",
         "cstdlib": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp"
     }
 }

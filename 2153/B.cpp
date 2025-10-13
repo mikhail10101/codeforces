@@ -59,7 +59,24 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    /*
+    a + b = a | b + x
+    b + c = b | c + y
+    a + c = a | c + z
+
+    x & y & z should be in a, b, and c
+    If x & y == y & z == x & z, can we always find a solution?
+    */
+    int x, y, z; cin >> x >> y >> z;
+    if (
+        (x & y) == (y & z) && 
+        (x & y) == (x & z) && 
+        (y & z) == (x & z)
+    ) {
+        cout << "YES";
+    } else {
+        cout << "NO";
+    }
 }
 
 bool multiple = true;
