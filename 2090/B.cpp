@@ -18,8 +18,6 @@ using namespace std;
 using ll = long long;
 
 const ll INF = 1e17 + 11;
-const string NO = "NO";
-const string YES = "YES";
 
 struct custom_hash {
     static uint64_t splitmix64(uint64_t x) {
@@ -61,7 +59,43 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n, m; cin >> n >> m;
+    vector<vector<int>> grid(n, vector<int>(m));
+    for (int i =0 ; i < n; i++) {
+        string s; cin >> s;
+        for (int j = 0; j < m; j++) {
+            grid[i][j] = s[j] - '0';
+        }
+    }
+
+    /*
+    1 0 1 1 0 1
+    1 1 2 3 3 4
+    */
+
+    vector<vector<int>> rowPref = grid;
+    vector<vector<int>> colPref = grid;
+    for (int i = 0; i < n; i++) {
+        for (int j = 1; j < m; j++) {
+            rowPref[i][j] += rowPref[i][j - 1];
+        }
+    }
+    for (int j = 0; j < m; j++) {
+        for (int i = 1; i < n; i++) {
+            colPref[i][j] += colPref[i - 1][j];
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (grid[i][j]) {
+                if (rowPref[i][j] != j + 1 && colPref[i][j] != i + 1) {
+                    cout << "NO"; return;
+                }
+            }
+        }
+    }
+
+    cout << "YES";
 }
 
 bool multiple = true;

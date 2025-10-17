@@ -61,7 +61,9 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    if (n % 33) cout << NO;
+    else cout << YES;
 }
 
 bool multiple = true;

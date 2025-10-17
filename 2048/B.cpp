@@ -61,7 +61,23 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n, k; cin >> n >> k;
+    int smallest = 1;
+    vector<bool> used(n + 1, false);
+    vector<int> a(n);
+    for (int i = k - 1; i < n; i += k) {
+        a[i] = smallest;
+        used[smallest] = true;
+        smallest++;
+    };
+    smallest = 1;
+    for (int i = 0; i < n; i++) {
+        if (a[i] == 0) {
+            while (used[smallest]) smallest++;
+            a[i] = smallest++;
+        }
+    }
+    printVec(a);
 }
 
 bool multiple = true;

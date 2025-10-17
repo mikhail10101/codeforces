@@ -18,8 +18,6 @@ using namespace std;
 using ll = long long;
 
 const ll INF = 1e17 + 11;
-const string NO = "NO";
-const string YES = "YES";
 
 struct custom_hash {
     static uint64_t splitmix64(uint64_t x) {
@@ -61,7 +59,35 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    string s; cin >> s;
+    vector<int> a(n, -1);
+    vector<int> idxs = {-1};
+    for (int i = 0; i < n; i++) {
+        if (s[i] == '1') {
+            a[i] = i + 1;
+            idxs.push_back(i);
+        }
+    } idxs.push_back(n);
+
+    // Keep islands of 0s
+    // Islands of length 1 are invalid
+    // All other islands can be solved
+    // through rotation
+    for (int i = 1; i < idxs.size(); i++) {
+        int gap = idxs[i] - idxs[i - 1];
+        if (gap == 1) continue;
+        if (gap == 2) {
+            cout << "NO"; return;
+        }
+        for (int j = idxs[i - 1] + 1; j < idxs[i] - 1; j++) {
+            a[j] = j + 2;
+        }
+        a[idxs[i] - 1] = idxs[i - 1] + 2;
+    }
+
+    cout << "YES" << endl;
+    printVec(a);
 }
 
 bool multiple = true;

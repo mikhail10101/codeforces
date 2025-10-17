@@ -61,7 +61,20 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> p(n), s(n);
+    for (int i = 0; i < n; i++) cin >> p[i];
+    for (int i = 0; i < n; i++) cin >> s[i];
+    int k = s[0];
+    if (p[n - 1] != k) {
+        cout << NO; return;
+    }
+    for (int i = 0; i < n - 1; i++) {
+        if (gcd(p[i], s[i + 1]) != k) {
+            cout << NO; return;
+        }
+    }
+    cout << YES;
 }
 
 bool multiple = true;

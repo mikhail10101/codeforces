@@ -61,7 +61,20 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    string s; cin >> s;
+    if (s[0] != '1') {
+        cout << NO; return;
+    }
+    int n = s.size();
+    if (s[n - 1] == '9') {
+        cout << NO; return;
+    }
+    for (int i = 1; i < n - 1; i++) {
+        if (s[i] == '0') {
+            cout << NO; return;
+        }
+    }
+    cout << YES;
 }
 
 bool multiple = true;
