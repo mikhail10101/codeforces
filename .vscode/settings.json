@@ -23,6 +23,9 @@
         "cstdlib": "cpp",
         "numeric": "cpp",
         "chrono": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "iterator": "cpp",
+        "xtree": "cpp",
+        "stdexcept": "cpp"
     }
 }
