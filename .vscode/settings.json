@@ -26,6 +26,7 @@
         "limits": "cpp",
         "iterator": "cpp",
         "xtree": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "ios": "cpp"
     }
 }
