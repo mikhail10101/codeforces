@@ -60,31 +60,30 @@ int find_conseq(int n) {
     return root;
 }
 
-int query(int idx, int x) {
-    cout << "? " << idx << " " << x << endl;
-    int res; cin >> res;
-    return res;
-}
-
 void solve() {
     /*
-    Operation: We know whether p & idx is equal to 0
+    Bunch of strings in order choose which ones to use
+    Point system:
+    - n a r e k in order +5
+    - all other letters n, a, r, e, k -1 each
 
-    If we p & x == 0, that means p is the reverse of x with 
-    an unknown amount of 1s padding the front
+    Guess: we can run a dp?
+    Much of the patterns in dp emerge here such as subproblem
+    casing and ordered data
 
-    p = 1, x = 101, receive 0, that means a[1] = 1...010
-    p = 1, x = 1101, receive 0, that means a[1] = 1...0010
-    We're now sure that a[1] is 010
+    Each word is stripped to the letters
+    For each word, we can mark an entry and exit index
 
-    We can compare each number to the middle power of 2: 1...0...
-    Everything that returns not a 0 is greater than this power of 2
+    Question: If a word contributes a negative score, can
+    it setup for a larger positive score?
 
-    We can run n-1 queries
-    Afterwards, run n-1 / 2 queries
-    Afterwards, run n-1 / 4 queries...
+    Yes.
+    nar  nare  knareknarek
+
+    How do we establish the dp relation?
+    dp[i][j] is the max score after processing the first i string
+    and we have the first j chars of uncompleted string
     */
-    int n; cin >> n;
     
 }
 

@@ -60,32 +60,21 @@ int find_conseq(int n) {
     return root;
 }
 
-int query(int idx, int x) {
-    cout << "? " << idx << " " << x << endl;
-    int res; cin >> res;
-    return res;
-}
-
 void solve() {
     /*
-    Operation: We know whether p & idx is equal to 0
+    Easy way is to graph all the cities together
+    but this might take too long.
 
-    If we p & x == 0, that means p is the reverse of x with 
-    an unknown amount of 1s padding the front
+    Probably a way to generalize.
 
-    p = 1, x = 101, receive 0, that means a[1] = 1...010
-    p = 1, x = 1101, receive 0, that means a[1] = 1...0010
-    We're now sure that a[1] is 010
+    4(3) / 2 = 6 possible combinations of portals
+    BG BR BY RG RY GY
 
-    We can compare each number to the middle power of 2: 1...0...
-    Everything that returns not a 0 is greater than this power of 2
-
-    We can run n-1 queries
-    Afterwards, run n-1 / 2 queries
-    Afterwards, run n-1 / 4 queries...
-    */
-    int n; cin >> n;
+    We want to query the fastest way to move from
+    the optimal B to the G
     
+    If BG exists, use BG
+    */
 }
 
 bool multiple = true;

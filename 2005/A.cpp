@@ -60,32 +60,31 @@ int find_conseq(int n) {
     return root;
 }
 
-int query(int idx, int x) {
-    cout << "? " << idx << " " << x << endl;
-    int res; cin >> res;
-    return res;
-}
-
 void solve() {
-    /*
-    Operation: We know whether p & idx is equal to 0
-
-    If we p & x == 0, that means p is the reverse of x with 
-    an unknown amount of 1s padding the front
-
-    p = 1, x = 101, receive 0, that means a[1] = 1...010
-    p = 1, x = 1101, receive 0, that means a[1] = 1...0010
-    We're now sure that a[1] is 010
-
-    We can compare each number to the middle power of 2: 1...0...
-    Everything that returns not a 0 is greater than this power of 2
-
-    We can run n-1 queries
-    Afterwards, run n-1 / 2 queries
-    Afterwards, run n-1 / 4 queries...
-    */
     int n; cin >> n;
-    
+    /*
+    1 2 3 4 5
+    Minimize palindromic subsequences?
+
+    Guess: repeat 1 2 3 4 5 again and again
+    Using similar numbers allow for more opportunities of subsequences
+    to happen
+
+    Is it better to keep similar letters together?
+    Prevent palindromes across blocks
+    */
+    vector<char> c = {'a', 'e', 'i', 'o', 'u'};
+    int rem = n % 5;
+    int bulk = n / 5;
+    for (int i = 0; i < 5; i++) {
+        int p = bulk;
+        if (rem > 0) {
+            p++; rem--;
+        }
+        for (int j = 0; j < p; j++) {
+            cout << c[i];
+        }
+    }
 }
 
 bool multiple = true;

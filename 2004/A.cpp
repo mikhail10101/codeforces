@@ -60,32 +60,23 @@ int find_conseq(int n) {
     return root;
 }
 
-int query(int idx, int x) {
-    cout << "? " << idx << " " << x << endl;
-    int res; cin >> res;
-    return res;
-}
-
 void solve() {
-    /*
-    Operation: We know whether p & idx is equal to 0
-
-    If we p & x == 0, that means p is the reverse of x with 
-    an unknown amount of 1s padding the front
-
-    p = 1, x = 101, receive 0, that means a[1] = 1...010
-    p = 1, x = 1101, receive 0, that means a[1] = 1...0010
-    We're now sure that a[1] is 010
-
-    We can compare each number to the middle power of 2: 1...0...
-    Everything that returns not a 0 is greater than this power of 2
-
-    We can run n-1 queries
-    Afterwards, run n-1 / 2 queries
-    Afterwards, run n-1 / 4 queries...
-    */
     int n; cin >> n;
-    
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    if (n == 1) {
+        cout << YES; return;
+    }
+
+    if (n >= 3) {
+        cout << NO; return;
+    }
+
+    if (n == 2) {
+        if (abs(a[0] - a[1]) == 1) cout << NO;
+        else cout << YES;
+    }
 }
 
 bool multiple = true;
