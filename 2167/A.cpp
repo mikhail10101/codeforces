@@ -62,7 +62,9 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int a, b, c, d; cin >> a >> b >> c >> d;
+    if (a == b && b == c && c == d) cout << YES;
+    else cout << NO;
 }
 
 bool multiple = true;

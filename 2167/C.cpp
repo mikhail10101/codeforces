@@ -62,7 +62,27 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    /*
+    Can swap positions only if they have a different parity
+
+    O E O O O
+    E O O O O
+    O O E O O
+
+    If at least one of both exists, the sorting can happen normally
+    */
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    bool odd = false, even = false;
+    for (int x: a) {
+        if (x % 2) odd = true;
+        else even = true;
+    }
+
+    if (odd && even) sort(a.begin(), a.end());
+    printVec(a);
 }
 
 bool multiple = true;

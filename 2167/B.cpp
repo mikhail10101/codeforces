@@ -62,7 +62,21 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    string s, t; cin >> s >> t;
+
+    vector<int> freqs(27), freqt(27);
+    for (int i = 0; i < n; i++) {
+        freqs[s[i] - 'a']++; freqt[t[i] - 'a']++;
+    }
+
+    for (int i = 0; i < 27; i++) {
+        if (freqs[i] != freqt[i]) {
+            cout << NO; return;
+        }
+    }
+
+    cout << YES;
 }
 
 bool multiple = true;

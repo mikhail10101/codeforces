@@ -62,7 +62,27 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n, k, x; cin >> n >> k >> x;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    sort(a.begin(), a.end());
+
+    vector<pair<int, int>> gaps;
+
+    // Find the smallest gap between friends
+    int mi = 1000000000 + 1;
+    mi = min(mi, a[0] - 0);
+    gaps.push_back({ a[0] - 0, -1 });
+
+    mi = min(mi, x - a[n - 1]);
+    gaps.push_back({ x - a[n - 1], n - 1 });
+
+    for (int i = 1; i < n; i++) {
+        mi = min(mi, (a[i] - a[i - 1]) / 2);
+        gaps.push_back({(a[i] - a[i - 1]) / 2, i - 1 });
+    }
+
+    sort(gaps.begin(), gaps.end(), greater<pair<int, int>>());
 }
 
 bool multiple = true;
@@ -74,7 +94,7 @@ int main() {
     if (multiple) cin >> t;
     while (t--) {
         solve();
-        cout << endl;
+        cout << endl << endl;
     }
 
 }

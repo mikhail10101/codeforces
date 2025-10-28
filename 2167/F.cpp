@@ -62,7 +62,40 @@ int find_conseq(int n) {
 }
 
 void solve() {
+    int n, k; cin >> n >> k;
+    vector<vector<int>> adj(n);
+    for (int i = 0; i < n - 1; i++) {
+        int u, v; cin >> u >> v; u--; v--;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    vector<int> par(n, -1), cnt(n, 1);
+    auto dfs = [&] (auto self, int node) -> void {
+        for (int nei: adj[node]) {
+            if (par[node] == nei) continue;
+            par[nei] = node;
+            self(self, nei);
+            cnt[node] += cnt[nei];
+        }
+    };
+
+    dfs(dfs, 0);
     
+    int total = n;
+    for (int node = 0; node < n; node++) {
+        int children = 0;
+        for (int nei: adj[node]) {
+            int side = cnt[nei];
+            if (nei == par[node]) continue;
+            children += side;
+            if (n - side >= k) total += side;
+        }
+        int parSide = n - 1 - children;
+        if (n - parSide >= k) total += parSide;
+    }
+
+    cout << total;
 }
 
 bool multiple = true;

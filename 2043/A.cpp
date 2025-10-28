@@ -62,7 +62,17 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    ll n; cin >> n;
+    /*
+    A coin expressed in base 4
+    How many digits would a number have in base4?
+    x would have log4(x) + 1 digits
+    The goal is to reduce log4(x) + 1 digits to 1 digit
+    This would take log4(x) operations
+    Each operation doubles
+    */
+    ll ops = manual_log(n, (ll)4);
+    cout << (ll)pow(2, ops);
 }
 
 bool multiple = true;

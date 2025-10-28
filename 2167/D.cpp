@@ -17,7 +17,7 @@ using namespace std;
 
 using ll = long long;
 
-const ll INF = 1e17 + 11;
+const ll INF = 1e18;
 const string NO = "NO";
 const string YES = "YES";
 
@@ -62,7 +62,24 @@ int find_conseq(int n) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<ll> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    ll g = a[0];
+    for (ll x: a) g = gcd(g, x);
+
+    if (g % 2 == 1) {
+        cout << 2; return;
+    }
+
+    for (ll i = 3; i <= INF; i += 2) {
+        if (gcd(i, g) == 1) {
+            cout << i; return;
+        }
+    }
+
+    cout << -1;
 }
 
 bool multiple = true;

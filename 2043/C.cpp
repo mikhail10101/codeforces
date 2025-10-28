@@ -43,11 +43,10 @@ void printVec(vector<T> vec) {
     } cout << endl;
 }
 
-template <typename T>
-T manual_log(T n, T base) {
+int int_log(int n, int base) {
     if (base < 2) throw invalid_argument("Base must be >= 2");
     if (n < 1)    throw invalid_argument("n must be >= 1");
-    T result = 0;
+    int result = 0;
     while (n >= base) {
         n /= base;
         result++;
@@ -62,7 +61,40 @@ int find_conseq(int n) {
 }
 
 void solve() {
+    /*
+    We are given an array filled with 1s and -1s
+    One element is replaced with an arbitrary integer
+
+    Find all possible sums of subarrays
+
+    !! What does most of the array being filled with 1s and -1s do?
+    Biggest thing is that this bounds the result of the array
+    After every index, the number can only either increase by 1 or decrease by 1
+    That means that if we find the max subarray sum and min subarray sum,
+    we can simply define all possible subarrays as the range of numbers from left to right
+
+    However, we need to consider the arbitrary integer
+    We can divide the kinds of subarrays into three
+
+    1) To the left of x
+    2) To the right of x
+    The above types would be counted the same way
+    3) Including x
+
+    This means combining all possible arrays that end at x
+    With all possible subarrays that start after x
+    */
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
     
+    int idx = 0;
+    while (idx < n && (a[idx] == 1 || a[idx] == -1)) idx++;
+
+    auto calc = [&] (int l, int r) -> pair<int, int> {
+        // Run Kadane's algorithm twice
+        
+    };
 }
 
 bool multiple = true;
