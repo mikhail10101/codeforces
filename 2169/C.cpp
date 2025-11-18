@@ -43,10 +43,11 @@ void printVec(vector<T> vec) {
     } cout << endl;
 }
 
-int int_log(int n, int base) {
+template <typename T>
+T manual_log(T n, T base) {
     if (base < 2) throw invalid_argument("Base must be >= 2");
     if (n < 1)    throw invalid_argument("n must be >= 1");
-    int result = 0;
+    T result = 0;
     while (n >= base) {
         n /= base;
         result++;
@@ -61,7 +62,14 @@ int find_conseq(int n) {
 }
 
 void solve() {
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
     
+    int r = 0;
+    while (r < n && 2 * r + 2 > a[r]) { r++; }
+
+    cout << r;
 }
 
 bool multiple = true;

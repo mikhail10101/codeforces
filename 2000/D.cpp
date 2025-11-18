@@ -11,6 +11,7 @@
 #include <unordered_set>
 #include <map>
 #include <unordered_map>
+#include <chrono>
 
 using namespace std;
 
@@ -25,33 +26,61 @@ void printVec(vector<T> vec) {
     } cout << endl;
 }
 
+struct custom_hash {
+    static uint64_t splitmix64(uint64_t x) {
+        // http://xorshift.di.unimi.it/splitmix64.c
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+
+    size_t operator()(uint64_t x) const {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+
 void solve() {
     int n; cin >> n;
     vector<int> a(n);
     for (int i = 0; i < n; i++) cin >> a[i];
     string s; cin >> s;
 
-    vector<int> pref(n + 1);
-    for (int i = 0; i < n; i++) {
-        pref[i + 1] = pref[i] + a[i];
-    }
-
     /*
-    _ 1 4 6 7
-    0 1 5 11 18
+    Provided certain numbers as left endpoints and right endpoints
+    After a number is used as an endpoint, it cannot be used anymore
+
+    Try to maximize the sum
+    
+    Insight: Using the lowest L point and the highest R point greedily is
+    always beneficial
+
+    How can we prove this?
+    Possibly contradiction is LRLLLR
+
+    But we see here that taking the leftmost and the rightmost is the same
+    as breaking it up
+    For bounded LLLRRR, it doesn't matter what order we choose.
     */
+    vector<ll> prefSum(n + 1);
+    for (int i = 1; i <= n; i++) prefSum[i] = prefSum[i - 1] + a[i - 1];
 
     ll res = 0;
-    int left = 0;
-    int right = n - 1;
-    while (true) {
-        while (left < n && s[left] == 'R') left++;
-        while (right >= 0 && s[right] == 'L') right++;
 
-        if (left < right) {
-            res += pref[right] - pref[left];
-        } else break;
-    }
+    int r = n - 1;
+    for (int l = 0; l < n; l++) {
+        if (s[l] == 'R') continue;
+        while (r >= 0 && s[r] == 'L') r--;
+        if (l < r) {
+            res += prefSum[r + 1] - prefSum[l];
+        } else {
+            break;
+        }
+        r--;
+    }   
+
+    cout << res;
 }
 
 bool multiple = true;
