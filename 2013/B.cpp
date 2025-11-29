@@ -56,7 +56,15 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<ll> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    for (int i = 0; i < n - 2; i++) {
+        a[n - 2] -= a[i];
+    }
+
+    cout << a[n - 1] - a[n - 2];
 }
 
 bool multiple = true;

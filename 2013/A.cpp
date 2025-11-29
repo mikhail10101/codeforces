@@ -56,7 +56,18 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    int n, x, y; cin >> n >> x >> y;
+
+    if (n == 0) {
+        cout << 0;
+        return;
+    }
+
+    if (x >= y) {
+        cout << (n - 1) / y + 1;
+    } else {
+        cout << (n - 1) / x + 1;
+    }
 }
 
 bool multiple = true;
