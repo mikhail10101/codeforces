@@ -56,7 +56,22 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    int n, k; cin >> n >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    sort(a.begin(), a.end());
+
+    int res = 0;
+    int i = 0;
+    int j = 0;
+    for (int i = 0; i < n; i++) {
+        while (j < n && a[j] < a[i] + k && (j == 0 || a[j] == a[j - 1] || a[j] == a[j - 1] + 1)) j++;
+        res = max(res, j - i);
+        if (i + 1 == j) j++;
+    }
+
+    cout << res;
 }
 
 bool multiple = true;

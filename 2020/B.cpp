@@ -56,7 +56,21 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    ll k; cin >> k;
+
+    /*
+    Find n - ceil(sqrt(n)) = k
+    */
+    ll left = 0, right = 2e18 + 1;
+    while (left + 1 < right) {
+        ll mid = left + (right - left) / 2;
+        // cout << "MID " << mid << endl;
+        ll val = mid - (ll)(sqrtl(mid));
+        if (val < k) left = mid;
+        else right = mid;
+    }
+
+    cout << right;
 }
 
 bool multiple = true;

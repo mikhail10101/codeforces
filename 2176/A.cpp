@@ -56,7 +56,18 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    vector<int> left;
+    for (int i = 0; i < n; i++) {
+        if (left.empty() || a[i] >= left.back()) {
+            left.push_back(a[i]);
+        }
+    }
+
+    cout << n - left.size();
 }
 
 bool multiple = true;

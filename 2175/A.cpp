@@ -56,7 +56,22 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    sort(a.begin(), a.end());
+    auto last = unique(a.begin(), a.end());
+    a.erase(last, a.end());
+
+    int k = a.size();
+    int upper = lower_bound(a.begin(), a.end(), k) - a.begin();
+
+    if (upper == k) {
+        cout << a[k - 1];
+    } else {
+        cout << a[upper];
+    }
 }
 
 bool multiple = true;

@@ -56,7 +56,15 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+
+    if (n == 1) { cout << 1; return; }
+    if (n == 2) { cout << 2 + 3 + 4; return; }
+
+    int a = (3 * n * n - 3) + (n * (n - 1) - 1);
+    int b = (3 * n * (n - 1) - 3) + (n * n - 1) + (n * (n - 2) - 1);
+
+    cout << max(a,b);
 }
 
 bool multiple = true;

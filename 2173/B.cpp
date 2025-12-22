@@ -56,7 +56,40 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    /*
+    Either perform
+    k => k - a
+    k => b - k
+
+    Lets maintain two best scenarios
+        - the maximum at any point
+        - the minimum at any point
+
+    We do this because on the final turn, we need
+    to choose whether k should have been negative the
+    whole time or positive the whole time
+
+    The answer to each turn isn't based off just the
+    previous turn, but the accumulation
+    */
+    int n; cin >> n;
+    vector<ll> a(n), b(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int i = 0; i < n; i++) cin >> b[i];
+    ll maxi = max(-a[0], b[0]);
+    ll mini = min(-a[0], b[0]);
+
+    for (int i = 1; i < n; i++) {
+        // Calculate all 4 options
+        ll w = maxi - a[i];
+        ll x = b[i] - maxi;
+        ll y = mini - a[i];
+        ll z = b[i] - mini;
+        maxi = max({w, x, y, z});
+        mini = min({w, x, y, z});
+    }
+
+    cout << maxi;
 }
 
 bool multiple = true;

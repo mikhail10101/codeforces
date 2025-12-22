@@ -56,7 +56,26 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    int res = 0;
+    ll n, k; cin >> n >> k;
+
+    if (k == 1) {
+        cout << n; return;
+    }
+
+    ll v = 1, p = 1;
+    while (v * k <= n) {
+        v *= k; p++;
+    }
+    while (n > 0) {
+        while (v > n) {
+            v /= k;
+            p--;
+        }
+        res += n / v;
+        n = n % v;
+    }
+    cout << res;
 }
 
 bool multiple = true;

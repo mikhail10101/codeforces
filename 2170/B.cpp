@@ -56,7 +56,21 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    ll n; cin >> n;
+    vector<ll> b(n);
+    for (ll i = 0; i < n; i++) cin >> b[i];
+
+    ll total = accumulate(b.begin(), b.end(), 0ll);
+    ll z = count(b.begin(), b.end(), 0ll);
+    ll nz = n - z;
+    ll excess = total - nz;
+
+    if (excess >= n) {
+        cout << nz;
+    } else {
+        n -= excess;
+        cout << max(nz - (n - 1), 1ll);
+    }
 }
 
 bool multiple = true;

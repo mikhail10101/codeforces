@@ -56,7 +56,24 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    int n, k; cin >> n >> k;
+    string s; cin >> s;
+
+    int res = 0;
+    int ctr = 0;
+    if (s[0] == '0') ctr = k;
+
+    for (int i = 0; i < n; i++) {
+        if (s[i] == '1') {
+            ctr = 0;
+        } else {
+            ctr++;
+        }
+
+        if (ctr > k) res++;
+    }
+
+    cout << res;
 }
 
 bool multiple = true;

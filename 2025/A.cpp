@@ -56,7 +56,12 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    string s, t; cin >> s >> t;
+    int n = s.size(), m = t.size();
+    int i = 0;
+    while (i < min(n, m) && s[i] == t[i]) i++; 
+    if (i == 0) cout << n + m;
+    else cout << n + m - i + 1;
 }
 
 bool multiple = true;

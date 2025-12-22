@@ -56,7 +56,38 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
-    
+    int n, m; cin >> n >> m;
+    vector<int> r(n);
+    for (int i = 0; i < n; i++) cin >> r[i];
+
+    /*
+    Tempted to say its a dp question right of the bat
+
+    If not dp, its a binary search
+    Is there a way to guarantee a certain amt of pts?
+
+    Lets do this
+    In between point gain, how can determine whether
+    to use a point for A or B?
+    We cannot, not until we have information that
+    comes later
+    Greedy does not work
+
+    Lets think dp
+    Can we maintain dp[a][b]
+
+    Moving from dp[a][b] to dp[a+1][b]
+    Oh
+
+    dp[a][b] can stem from either dp[a-1][b] or dp[a][b-1]
+    We can choose the max value that results from using
+    one of these combinations.
+
+    For the ith point, we need to solve for 
+    [0][i], [1][i-1], [2][i-2], [3][i-3]...
+
+    This is m^2 complexity and with m <= 5000, will run
+    */
 }
 
 bool multiple = true;

@@ -56,7 +56,42 @@ T manual_log(T n, T base) {
 }
 
 void solve() {
+    ll b, c, d; cin >> b >> c >> d;
+    ll mx = max({b, c, d});
+
+    if (mx == 0) {
+        cout << 0;
+        return;
+    }
     
+    ll amt = manual_log(mx, 2ll) + 1;
+    vector<vector<int>> bits(3, vector<int>(amt));
+    for (int i = 0; i < amt; i++) {
+        bits[0][i] = ((b & (1ll << i)) >> i);
+        bits[1][i] = ((c & (1ll << i)) >> i);
+        bits[2][i] = ((d & (1ll << i)) >> i);
+    }
+
+    vector<int> a(amt);
+    for (int i = 0; i < amt; i++) {
+        if (bits[0][i] == bits[1][i]) {
+            if (bits[0][i] == 0) a[i] = bits[2][i];
+            else a[i] = 1 - bits[2][i];
+        } else {
+            if (bits[0][i] == bits[2][i]) {
+                a[i] = 1;
+            } else {
+                cout << -1;
+                return;
+            }
+        }
+    }
+
+    ll res = 0;
+    for (int i = 0; i < amt; i++) {
+        res += a[i] * (1ll << i);
+    }
+    cout << res;
 }
 
 bool multiple = true;
