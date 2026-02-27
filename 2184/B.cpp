@@ -28,20 +28,22 @@ void printVec(vector<T> vec) {
     } cout << endl;
 }
 
-long long nCr(int n, int r) {
-    if (r < 0 || r > n) return 0;
-    if (r == 0 || r == n) return 1;
-    if (r > n / 2) r = n - r; 
-
-    long long res = 1;
-    for (int i = 1; i <= r; ++i) {
-        res = res * (n - i + 1) / i;
-    }
-    return res;
-}
-
 void solve() {
-    
+    int s, k, m; cin >> s >> k >> m;
+
+    if (s <= k) {
+        m %= k;
+        cout << max(0, s - m);
+    } else {
+        m %= 2 * k;
+        if (m < k) {
+            cout << s - m;
+        } else {
+            int first = k;
+            int offset = m - k;
+            cout << max(0, first - offset);
+        }
+    }
 }
 
 bool multiple = true;

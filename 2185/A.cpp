@@ -41,7 +41,10 @@ long long nCr(int n, int r) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cout << i << " ";
+    }
 }
 
 bool multiple = true;

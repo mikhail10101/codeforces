@@ -28,20 +28,32 @@ void printVec(vector<T> vec) {
     } cout << endl;
 }
 
-long long nCr(int n, int r) {
-    if (r < 0 || r > n) return 0;
-    if (r == 0 || r == n) return 1;
-    if (r > n / 2) r = n - r; 
-
-    long long res = 1;
-    for (int i = 1; i <= r; ++i) {
-        res = res * (n - i + 1) / i;
-    }
-    return res;
-}
-
 void solve() {
+    int n, k; cin >> n >> k;
     
+    if (n == k) {
+        cout << 0; return;
+    }
+
+    int time = 0;
+    while (n > k && n > 1) {
+        time++;
+        if (n & 1) {
+            n = (n >> 1);
+            if (n == k || n + 1 == k) {
+                cout << time; return;
+            }
+            n |= 1;
+        } else {
+            n >>= 1;
+            if (n == k) {
+                cout << time; return;
+            }
+        }
+        // cout << "TIME: " << time << " " << n << endl;
+    }
+
+    cout << -1;
 }
 
 bool multiple = true;

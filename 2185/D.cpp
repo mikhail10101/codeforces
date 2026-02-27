@@ -41,7 +41,38 @@ long long nCr(int n, int r) {
 }
 
 void solve() {
-    
+    int n, m, h; cin >> n >> m >> h;
+    vector<int> orig(n);
+    for (int i = 0; i < n; i++) cin >> orig[i];
+
+    vector<int> a = orig;
+    int lastReset = -1;
+    vector<int> lastAdd(n, -1);
+    for (int i = 0; i < m; i++) {
+        int idx; cin >> idx; idx--;
+        int amt; cin >> amt;
+
+        if (lastAdd[idx] >= lastReset) {
+            lastAdd[idx] = i;
+            a[idx] += amt;
+        } else {
+            lastAdd[idx] = i;
+            a[idx] = orig[idx] + amt;
+        }
+
+        if (a[idx] > h) {
+            lastReset = i;
+            a[idx] = orig[idx];
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (lastAdd[i] > lastReset) {
+            cout << a[i] << " ";
+        } else {
+            cout << orig[i] << " ";
+        }
+    }
 }
 
 bool multiple = true;
