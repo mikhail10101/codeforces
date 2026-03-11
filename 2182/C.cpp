@@ -40,8 +40,37 @@ long long nCr(int n, int r) {
     return res;
 }
 
+ll miniSolve(vector<int> a, vector<int> b) {
+    int n = a.size();
+    ll res = 0;
+    for (int i = 0; i < n; ++i) {
+        // cout << "LINE " << endl;
+        bool success = true;
+        for (int j = 0; j < n; ++j) {
+            // cout << a[(i + j) % n] << " " << b[j] << endl;
+            if (a[(i + j) % n] >= b[j]) {
+                success = false; 
+                break;
+            }
+        }
+        if (success) ++ res;
+        // cout << "END  " << endl;
+    }
+
+    return res;
+}
+
 void solve() {
-    
+    int n; cin >> n;
+    vector<int> a(n), b(n), c(n);
+    for (int i = 0; i < n; ++i) cin >> a[i];
+    for (int i = 0; i < n; ++i) cin >> b[i];
+    for (int i = 0; i < n; ++i) cin >> c[i];
+
+    ll x = miniSolve(a, b);
+    ll y = miniSolve(b, c);
+
+    cout << x * y * n;
 }
 
 bool multiple = true;

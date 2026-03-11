@@ -40,8 +40,29 @@ long long nCr(int n, int r) {
     return res;
 }
 
+int miniSolve(int);
+
 void solve() {
-    
+    int a, b; cin >> a >> b;
+    if (a < b) swap(a, b);
+    // a is bigger than b
+
+    int x = 0, y = 0;
+    int res = 0;
+    int cur = 1;
+
+    while (true) {
+        int tmp = x;
+        x = y + cur;
+        y = tmp;
+        if (x <= a && y <= b) {
+            res += 1;
+            cur *= 2;
+        } else 
+            break;
+    }
+
+    cout << res;
 }
 
 bool multiple = true;

@@ -41,7 +41,27 @@ long long nCr(int n, int r) {
 }
 
 void solve() {
-    
+    int n; cin >> n;
+    string s; cin >> s;
+
+    bool found2025 = false;
+    bool found2026 = false;
+    for (int i = 3; i < n; ++i) {
+        if (s[i - 3] == '2' && s[i - 2] == '0' && s[i - 1] == '2') {
+            if (s[i] == '5') found2025 = true;
+            if (s[i] == '6') found2026 = true;
+        }
+    }
+
+    if (found2026) {
+        cout << 0; return;
+    }
+
+    if (found2025) {
+        cout << 1; return;
+    }
+
+    cout << 0;
 }
 
 bool multiple = true;
